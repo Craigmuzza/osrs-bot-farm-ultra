@@ -2,8 +2,8 @@ services:
   - type: web
     name: osrs-dashboard
     env: node
-    buildCommand: npm install && cd server && npm install && cd ../agent && npm install
-    startCommand: node server/server.js
+    buildCommand: npm run install:all
+    startCommand: cd server && node server.js
     plan: free
     envVars:
       - key: NODE_ENV
@@ -15,7 +15,7 @@ services:
     name: osrs-agent
     env: node
     buildCommand: cd agent && npm install
-    startCommand: node agent-enhanced.js
+    startCommand: cd agent && node agent-enhanced.js
     plan: free
     envVars:
       - key: NODE_ENV
@@ -28,4 +28,3 @@ services:
     env: static
     buildCommand: echo "Static site"
     staticPublishPath: ./dashboard
-    # plan: free  ← REMOVE THIS LINE (STATIC IS ALWAYS FREE)

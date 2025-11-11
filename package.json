@@ -1,0 +1,12 @@
+{
+  "name": "osrs-bot-farm-ultra",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && cd server && npm install && cd ../agent && npm install",
+    "start": "concurrently \"cd server && node server.js\" \"cd agent && node agent-enhanced.js\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
