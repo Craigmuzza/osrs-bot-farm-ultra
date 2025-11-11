@@ -1,0 +1,24 @@
+plugins { id 'java' }
+
+group = 'com.craig.bankwealth'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.runelite.net' }
+}
+
+dependencies {
+    compileOnly 'net.runelite:client:1.12.3.1'
+    compileOnly 'net.runelite:runelite-api:1.12.3.1'
+    compileOnly 'org.slf4j:slf4j-api:1.7.25'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+tasks.jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}

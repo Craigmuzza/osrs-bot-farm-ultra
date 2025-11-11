@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OSRS Bot Farm - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', sans-serif; 
+      background: #0a0a0a; 
+      color: #fff; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 100vh; 
+      margin: 0; 
+    }
+    .login { 
+      background: #111; 
+      padding: 40px; 
+      border-radius: 16px; 
+      width: 320px; 
+      box-shadow: 0 0 30px rgba(255,106,0,0.3); 
+      text-align: center;
+    }
+    .logo { 
+      font-size: 28px; 
+      font-weight: bold; 
+      background: linear-gradient(135deg, #ff6a00, #ffb380); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      margin-bottom: 30px;
+    }
+    input { 
+      width: 100%; 
+      padding: 14px; 
+      margin: 12px 0; 
+      border: 1px solid #333; 
+      border-radius: 8px; 
+      background: #222; 
+      color: #fff; 
+      font-size: 16px;
+    }
+    button { 
+      width: 100%; 
+      padding: 14px; 
+      background: #ff6a00; 
+      border: none; 
+      border-radius: 8px; 
+      color: black; 
+      font-weight: bold; 
+      cursor: pointer; 
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    button:hover { background: #ffb380; }
+    #error { color: #ff6b6b; margin-top: 15px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="login">
+    <div class="logo">OSRS Bot Farm</div>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <p id="error"></p>
+  </div>
+
+  <script>
+    async function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      if (data.success) {
+        localStorage.setItem('token', data.token);
+        window.location = '/index-ultra.html';
+      } else {
+        document.getElementById('error').textContent = data.error || 'Login failed';
+      }
+    }
+  </script>
+</body>
+</html>

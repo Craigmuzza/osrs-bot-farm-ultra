@@ -1,0 +1,48 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Environment
+.env
+.env.local
+.env.development
+.env.production
+
+# Logs
+bot-logs/
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Build
+dist/
+build/
+
+# Data (DO NOT COMMIT PASSWORDS)
+data/accounts.json
+data/overlays.json
+data/settings.json
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Render
+render.yaml

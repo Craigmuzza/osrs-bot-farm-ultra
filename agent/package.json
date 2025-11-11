@@ -1,0 +1,13 @@
+{
+  "name": "osrs-agent",
+  "version": "1.0.0",
+  "main": "agent-enhanced.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.13.0",
+    "tail": "^2.2.4",
+    "express-rate-limit": "^6.7.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3"
+  }
+}
