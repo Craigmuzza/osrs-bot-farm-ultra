@@ -2,7 +2,7 @@ services:
   - type: web
     name: osrs-dashboard
     env: node
-    buildCommand: npm run install:all
+    buildCommand: npm install && cd server && npm install && cd ../agent && npm install
     startCommand: cd server && node server.js
     plan: free
     envVars:
@@ -15,7 +15,7 @@ services:
     name: osrs-agent
     env: node
     buildCommand: cd agent && npm install
-    startCommand: cd agent && node agent-enhanced.js
+    startCommand: cd agent && node agent-enhanced.js  # ← FIXED
     plan: free
     envVars:
       - key: NODE_ENV
