@@ -16,7 +16,7 @@ services:
   - type: web
     name: osrs-agent
     env: node
-    buildCommand: cd agent && npm install
+    buildCommand: mkdir -p bot-logs && cd agent && npm install  # ← CREATE FOLDER
     startCommand: cd agent && node agent-enhanced.js
     plan: free
     envVars:
