@@ -2,7 +2,7 @@ services:
   - type: web
     name: osrs-dashboard
     env: node
-    buildCommand: npm install && cd server && npm install && cd ../agent && npm install
+    buildCommand: mkdir -p bot-logs && npm install && cd server && npm install && cd ../agent && npm install
     startCommand: cd server && node server.js
     plan: free
     envVars:
@@ -16,7 +16,7 @@ services:
   - type: web
     name: osrs-agent
     env: node
-    buildCommand: mkdir -p bot-logs && cd agent && npm install  # ← CREATE FOLDER
+    buildCommand: mkdir -p bot-logs && cd agent && npm install
     startCommand: cd agent && node agent-enhanced.js
     plan: free
     envVars:
