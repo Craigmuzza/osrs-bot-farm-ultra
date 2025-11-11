@@ -10,18 +10,24 @@ services:
         value: production
       - key: JWT_SECRET
         generateValue: true
+      - key: ENCRYPTION_KEY
+        generateValue: true
 
   - type: web
     name: osrs-agent
     env: node
     buildCommand: cd agent && npm install
-    startCommand: cd agent && node agent-enhanced.js  # ← FIXED
+    startCommand: cd agent && node agent-enhanced.js
     plan: free
     envVars:
       - key: NODE_ENV
         value: production
       - key: SERVER_URL
         value: https://osrs-dashboard.onrender.com
+      - key: ENCRYPTION_KEY
+        fromService:
+          name: osrs-dashboard
+          envVarKey: ENCRYPTION_KEY
 
   - type: web
     name: osrs-dashboard-static
