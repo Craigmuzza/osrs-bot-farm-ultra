@@ -6,8 +6,9 @@ services:
     startCommand: node server/server.js
     plan: free
     envVars:
-      NODE_ENV: production
-      JWT_SECRET:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
         generateValue: true
 
   - type: web
@@ -17,8 +18,10 @@ services:
     startCommand: node agent-enhanced.js
     plan: free
     envVars:
-      NODE_ENV: production
-      SERVER_URL: https://osrs-dashboard.onrender.com
+      - key: NODE_ENV
+        value: production
+      - key: SERVER_URL
+        value: https://osrs-dashboard.onrender.com
 
   - type: web
     name: osrs-dashboard-static
