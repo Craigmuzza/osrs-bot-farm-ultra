@@ -27,6 +27,7 @@ services:
       - key: ENCRYPTION_KEY
         fromService:
           name: osrs-dashboard
+          type: web
           envVarKey: ENCRYPTION_KEY
 
   - type: web
