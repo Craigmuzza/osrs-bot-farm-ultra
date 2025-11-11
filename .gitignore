@@ -44,5 +44,3 @@ Dockerfile
 docker-compose.yml
 .dockerignore
 
-# Render
-render.yaml

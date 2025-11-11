@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: osrs-dashboard
+    env: node
+    buildCommand: npm install && cd server && npm install && cd ../agent && npm install
+    startCommand: node server/server.js
+    plan: free
+    envVars:
+      NODE_ENV: production
+      JWT_SECRET:
+        generateValue: true
+
+  - type: web
+    name: osrs-agent
+    env: node
+    buildCommand: cd agent && npm install
+    startCommand: node agent-enhanced.js
+    plan: free
+    envVars:
+      NODE_ENV: production
+      SERVER_URL: https://osrs-dashboard.onrender.com
+
+  - type: web
+    name: osrs-dashboard-static
+    env: static
+    buildCommand: echo "Static site"
+    staticPublishPath: ./dashboard
+    plan: free
