@@ -28,4 +28,4 @@ services:
     env: static
     buildCommand: echo "Static site"
     staticPublishPath: ./dashboard
-    plan: free
+    # plan: free  ← REMOVE THIS LINE (STATIC IS ALWAYS FREE)
