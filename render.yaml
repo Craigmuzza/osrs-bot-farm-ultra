@@ -2,7 +2,7 @@ services:
   - type: web
     name: osrs-dashboard
     env: node
-    buildCommand: mkdir -p bot-logs && npm install && cd server && npm install && cd ../agent && npm install
+    buildCommand: npm install && cd server && npm install && cd ../agent && npm install
     startCommand: cd server && node server.js
     plan: free
     envVars:
@@ -12,11 +12,10 @@ services:
         generateValue: true
       - key: ENCRYPTION_KEY
         generateValue: true
-
   - type: web
     name: osrs-agent
     env: node
-    buildCommand: mkdir -p bot-logs && cd agent && npm install
+    buildCommand: cd agent && npm install
     startCommand: cd agent && node agent-enhanced.js
     plan: free
     envVars:
@@ -29,7 +28,6 @@ services:
           name: osrs-dashboard
           type: web
           envVarKey: ENCRYPTION_KEY
-
   - type: web
     name: osrs-dashboard-static
     env: static

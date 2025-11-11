@@ -1,5 +1,5 @@
 // agent-enhanced.js - FINAL: CLEAN, NO DUPLICATES, FULLY WORKING
-require('dotenv').config({ path: require('path').join(__dirname, '../.env') });
+require('dotenv').config({ path: '/opt/render/project/src/.env' });
 const express = require('express');
 const { spawn, exec } = require('child_process');
 const path = require('path');
@@ -84,7 +84,7 @@ app.use('/api/', limiter);
 // === PATHS ===
 const ACCOUNTS_FILE = './data/accounts.json';
 const PURELAUNCHER_PATH = process.env.PURELAUNCHER_PATH || 'C:\\Users\\Craig\\Desktop\\PureLauncher\\PureLauncher.jar';
-const LOG_DIR = '/app/bot-logs'; // ← DOCKER MOUNT
+const LOG_DIR = '/tmp/bot-logs'; // ← DOCKER MOUNT
 const RUNELITE_HOME = process.env.RUNELITE_HOME || path.join(process.env.USERPROFILE || process.env.HOME, '.runelite');
 const runningBots = new Map();
 fs.mkdirSync(LOG_DIR, { recursive: true });
